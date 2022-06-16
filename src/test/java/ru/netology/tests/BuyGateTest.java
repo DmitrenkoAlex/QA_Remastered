@@ -93,7 +93,7 @@ public class BuyGateTest {
         var startPage = new PaymentMethod();
         var payment = startPage.goToBuyPage();
         payment.inputData(DataHelper.getCardWithoutHolder());
-        payment.waitNotificationWrongFormat();
+        payment.waitNotificationRequiredFieldError();
         assertEquals("0", SqlHelper.getOrderCount());
     }
 
