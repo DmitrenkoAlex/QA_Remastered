@@ -157,7 +157,7 @@ public class DataHelper {
         Faker faker = new Faker();
         String holder = faker.name().firstName() + " " + faker.name().lastName();
         String month = getShiftedMonth(4);
-        String year = getShiftedYear(1);
+        String year = getShiftedYear(-1);
         String cvv = faker.number().digits(3);
         return new Card("4444444444444441", month, year, holder, cvv);
     }
