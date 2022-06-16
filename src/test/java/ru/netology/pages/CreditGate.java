@@ -67,4 +67,8 @@ public class CreditGate {
         wrongFormat4Error.shouldHaveSize(4);
         requiredFieldError.shouldBe(visible, Duration.ofSeconds(10));
     }
+    
+    public void waitNotificationRequiredFieldError() {
+        requiredFieldError.shouldBe(visible, Duration.ofSeconds(15));
+    }
 }
