@@ -94,7 +94,7 @@ public class CreditGateTest {
         var startPage = new PaymentMethod();
         var payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getCardWithoutHolder());
-        payment.waitNotificationWrongFormat();
+        payment.waitNotificationRequiredFieldError();
         assertEquals("0", SqlHelper.getOrderCount());
     }
 
