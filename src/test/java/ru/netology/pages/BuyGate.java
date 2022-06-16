@@ -67,4 +67,8 @@ public class BuyGate {
         wrongFormat4Error.shouldHaveSize(4);
         requiredFieldError.shouldBe(visible, Duration.ofSeconds(15));
     }
+    
+    public void waitNotificationRequiredFieldError() {
+        requiredFieldError.shouldBe(visible, Duration.ofSeconds(15));
+    }
 }
