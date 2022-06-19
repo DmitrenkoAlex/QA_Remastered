@@ -71,6 +71,15 @@ public class BuyGateTest {
     }
 
     @Test
+    void buyNegativeNumberFieldNull() {
+        var startPage = new PaymentMethod();
+        var payment = startPage.goToBuyPage();
+        payment.inputData(DataHelper.getCardNullNumber());
+        payment.waitNotificationWrongFormat();
+        assertEquals("0", SqlHelper.getOrderCount());
+    }
+
+    @Test
     void buyNegativeMounthFieldEmpty() {
         var startPage = new PaymentMethod();
         var payment = startPage.goToBuyPage();
@@ -210,6 +219,15 @@ public class BuyGateTest {
         var startPage = new PaymentMethod();
         var payment = startPage.goToBuyPage();
         payment.inputData(DataHelper.getCardCvv2Symbols());
+        payment.waitNotificationWrongFormat();
+        assertEquals("0", SqlHelper.getOrderCount());
+    }
+
+    @Test
+    void buyNegativeCvvAllNull() {
+        var startPage = new PaymentMethod();
+        var payment = startPage.goToBuyPage();
+        payment.inputData(DataHelper.getCardCvvAllNull());
         payment.waitNotificationWrongFormat();
         assertEquals("0", SqlHelper.getOrderCount());
     }

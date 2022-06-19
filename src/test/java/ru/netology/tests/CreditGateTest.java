@@ -1,15 +1,18 @@
 package ru.netology.tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
+import com.github.javafaker.Faker;
 import io.qameta.allure.selenide.AllureSelenide;
 import lombok.val;
 import org.junit.jupiter.api.*;
+import ru.netology.data.Card;
 import ru.netology.data.DataHelper;
 import ru.netology.data.SqlHelper;
 import ru.netology.pages.PaymentMethod;
 
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static ru.netology.data.DataHelper.getShiftedMonth;
 
 public class CreditGateTest {
     public static String url = System.getProperty("sut.url");
@@ -67,6 +70,15 @@ public class CreditGateTest {
         var startPage = new PaymentMethod();
         var payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getCardWithoutMounth());
+        payment.waitNotificationWrongFormat();
+        assertEquals("0", SqlHelper.getOrderCount());
+    }
+
+    @Test
+    void creditNegativeNumberFieldNull() {
+        var startPage = new PaymentMethod();
+        var payment = startPage.goToCreditPage();
+        payment.inputData(DataHelper.getCardNullNumber());
         payment.waitNotificationWrongFormat();
         assertEquals("0", SqlHelper.getOrderCount());
     }
@@ -211,6 +223,15 @@ public class CreditGateTest {
         var startPage = new PaymentMethod();
         var payment = startPage.goToCreditPage();
         payment.inputData(DataHelper.getCardCvv2Symbols());
+        payment.waitNotificationWrongFormat();
+        assertEquals("0", SqlHelper.getOrderCount());
+    }
+
+    @Test
+    void creditNegativeCvvAllNull() {
+        var startPage = new PaymentMethod();
+        var payment = startPage.goToCreditPage();
+        payment.inputData(DataHelper.getCardCvvAllNull());
         payment.waitNotificationWrongFormat();
         assertEquals("0", SqlHelper.getOrderCount());
     }

@@ -39,6 +39,17 @@ public class DataHelper {
 
     }
 
+    public static Card getCardNullNumber(){
+        Faker faker = new Faker();
+        String holder = faker.name().firstName() + " " + faker.name().lastName();
+        String month = getShiftedMonth(1);
+        String year = getShiftedYear(1);
+        String cvv = faker.number().digits(3);
+        return new Card("0000000000000000", month, year, holder, cvv);
+
+    }
+
+
     public static Card getCardWithoutMounth(){
         Faker faker = new Faker();
         String holder = faker.name().firstName() + " " + faker.name().lastName();
@@ -186,6 +197,14 @@ public class DataHelper {
         String year = getShiftedYear(1);
         String cvv = faker.number().digits(2);
         return new Card("4444444444444441", month, year, holder, cvv);
+    }
+
+    public static Card getCardCvvAllNull() {
+        Faker faker = new Faker();
+        String holder = faker.name().firstName() + " " + faker.name().lastName();
+        String month = getShiftedMonth(7);
+        String year = getShiftedYear(1);
+        return new Card("4444444444444441", month, year, holder, "000");
     }
 
     public static Card getCardHolder1Word() {
