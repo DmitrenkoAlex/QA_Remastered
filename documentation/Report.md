@@ -20,10 +20,11 @@
 
 ### **Отчет Gradle:**
 
-![image](https://user-images.githubusercontent.com/93075484/174166021-ed46ce24-2b9e-465b-8af7-1c6113c12581.png![img.png](img.png))
+![image](https://user-images.githubusercontent.com/93075484/174477997-3857c8c1-6245-4ba5-9b78-7284d97a156a.png)
+
 
 
 ### **Общие рекомендации**
 
-#### Issue заведено `8`
+#### Issue заведено `10`
 #### Предоставить корректные требования к приложению
