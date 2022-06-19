@@ -17,16 +17,16 @@
 _**docker-compose up -d**_
 
 
-2. Запустить SUT, работающей на СУБД MySQl командой:
+2. Запуск приложения для MySQL:
 
 
 _**java -Dspring.datasource.url=jdbc:mysql://localhost:3306/app -jar artifacts/aqa-shop.jar**_
 
 
-на СУБД PostgreSQL командой:
+Запуск приложения для PostgreSQL:
 
 
-_**java -**_
+_**java -Dspring.datasource.url=jdbc:postgresql://localhost:5432/app -jar artifacts/aqa-shop.jar**_
 
 
 3. В новом терминале запустить авто-тесты командой для MySQL:
@@ -51,7 +51,9 @@ _**gradlew allureReport**_
 _**gradlew allureServe**_
 
 
-5. Остановить и удалить все контейнеры командой:
+5. Для перезапуска приложения, тестов и/или отчёта (также при использования другой БД) необходимо выполнить остановку их работы, нажав в соответствующих вкладках терминала Ctrl+С или закрыть вкладки.
+
+6. Остановить и удалить все контейнеры командой:
 
 
 _**docker-compose down**_
